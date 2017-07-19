@@ -1,21 +1,111 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container{
+    display:flex;
+    height: 100%;
+    align-items: center;
+    font-size: 16px;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.table {
+    width: 700rpx;
+    margin-top: 20rpx;
+    border-top: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    box-sizing: border-box;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.tr {
+    display: flex;
+    justify-content: space-between;
 }
 
-.usermotto {
-  margin-top: 200px;
+.th {
+    width: 140rpx;
+}
+
+.th,.td {
+    padding: 10px 0;
+    border-bottom: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.td {
+    width: 25%;
+}
+
+.th-blank{
+    width: 20%;
+}
+
+.th-dou {
+     width: 40%;
+     padding: 0;
+}
+.td.th-dou {
+    padding-top: 10px;
+}
+
+.th-one {
+    padding: 10px 0;
+    border-bottom: 1px solid #dadada;
+}
+
+.th-two {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.th-two view {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.right-line {
+    border-right: 1px solid #dadada;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    margin: 20rpx;
+}
+
+.form-item text{
+    width: 200rpx;
+    color: #333;
+}
+
+.form-item input {
+    width: 250rpx;
+    padding: 0 10rpx;
+    border: 1px solid #999;
+}
+
+.form-item .get-salary {
+    color: #f60;
+    font-weight: 600;
+}
+
+button {
+    width: 160rpx;
+    height: 180rpx;
+    line-height: 180rpx;
+    background-color: #43b149;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ps {
+    width: 100%;
+    padding: 20rpx;
+    margin-left: 20rpx;
+    color: #999;
+    font-size: 12px;
 }

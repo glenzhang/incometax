@@ -1,12 +1,101 @@
 <!--index.wxml-->
 <view class="container">
-<text>税前</text>
-<text>税后</text>
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+    <view class="flex">
+        <view class="form-container">
+            <view class="form-item">
+                <text>个人所得</text>
+                <input bindinput="bindKeyInput" maxlength="8"/>
+            </view>
+            <view class="form-item">
+                <text>社保上限</text>
+                <text>{{tax.max}}</text>
+            </view>
+            <view class="form-item">
+                <text>公积金上限</text>
+                <text>{{tax.max}}</text>
+            </view>
+            <view class="form-item">
+                <text>税后工资</text>
+                <text class="get-salary">{{got}}</text>
+            </view>
+        </view>
+
+        <button type="number" confirm-type="done" bindtap="calc">计算</button>
+    </view>
+
+    <view class="table">
+        <view class="tr">
+            <view class="th th-blank"></view>
+            <view class="th th-dou">
+                <view class="th-one">个人</view>
+                <view class="th-two">
+                    <view class="right-line">比例%</view>
+                    <view>缴费</view>
+                </view>
+            </view>
+         
+            <view class="th th-dou">
+                <view class="th-one">单位</view>
+                <view class="th-two">
+                    <view class="right-line">比例%</view>
+                    <view>缴费</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="tr">
+            <view class="td">养老</view>
+            <view class="td">{{tax.insurance.personal[0]}}</view>
+            <view class="td">{{insurance.ylao}}</view>
+            <view class="td">{{tax.insurance.corporate[0]}}</view>
+            <view class="td">{{insuranceCompany.ylao}}</view>
+        </view>
+        <view class="tr">
+            <view class="td">医疗</view>
+            <view class="td">{{tax.insurance.personal[1]}}</view>
+            <view class="td">{{insurance.yliao}}</view>
+            <view class="td">{{tax.insurance.corporate[1]}}</view>
+            <view class="td">{{insuranceCompany.yliao}}</view>
+        </view>
+        <view class="tr">
+            <view class="td">失业</view>
+            <view class="td">{{tax.insurance.personal[2]}}</view>
+            <view class="td">{{insurance.sye}}</view>
+            <view class="td">{{tax.insurance.corporate[2]}}</view>
+            <view class="td">{{insuranceCompany.sye}}</view>
+        </view>
+        <view class="tr">
+            <view class="td">工伤</view>
+            <view class="td">{{tax.insurance.personal[3]}}</view>
+            <view class="td">{{insurance.gs}}</view>
+            <view class="td">{{tax.insurance.corporate[3]}}</view>
+            <view class="td">{{insuranceCompany.gs}}</view>
+        </view>
+        <view class="tr">
+            <view class="td">生育</view>
+            <view class="td">{{tax.insurance.personal[4]}}</view>
+            <view class="td">{{insurance.syu}}</view>
+            <view class="td">{{tax.insurance.corporate[4]}}</view>
+            <view class="td">{{insuranceCompany.syu}}</view>
+        </view>
+        <view class="tr">
+            <view class="td">公积金</view>
+            <view class="td">{{tax.insurance.personal[5]}}</view>
+            <view class="td">{{insurance.gjj}}</view>
+            <view class="td">{{tax.insurance.corporate[5]}}</view>
+            <view class="td">{{insuranceCompany.gjj}}</view>
+        </view>
+        <view class="tr">
+            <view class="td th-blank">个税</view>
+            <view class="td th-dou">{{realTax}}</view>
+            <view class="td th-dou"></view>
+        </view>
+        <view class="tr">
+            <view class="td th-blank">总计</view>
+            <view class="td th-dou">{{personalTotal2}}</view>
+            <view class="td th-dou">{{companyTotal}}</view>
+        </view>
+    </view>
+
+    <view class="ps">**目前只支持上海个税</view>
 </view>
