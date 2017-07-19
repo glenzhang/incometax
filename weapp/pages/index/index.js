@@ -54,9 +54,23 @@ Page({
     },
 
     calc: function() {
+        var that = this;
+
+        if (isNaN(parseInt(this.data.inputValue))) {
+            wx.showModal({
+                title: '',
+                content: '请输入正确的税前工资',
+                showCancel: false,
+                success: function() {
+                    that.setData({
+                        inputValue: ''
+                    });
+                }
+            });
+        }
         var res = list.calc(this.data.inputValue);
+
         this.setData({
-            inputValue: res.real,
             insurance: res.insurance,
             insuranceCompany: res.insuranceCompany,
             companyTotal: res.companyTotal.toFixed(2),

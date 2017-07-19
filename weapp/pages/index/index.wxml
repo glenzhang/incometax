@@ -3,8 +3,8 @@
     <view class="flex">
         <view class="form-container">
             <view class="form-item">
-                <text>个人所得</text>
-                <input bindinput="bindKeyInput" maxlength="8"/>
+                <text>税前工资</text>
+                <input bindinput="bindKeyInput" type="number" confirm-type="done" maxlength="8"/>
             </view>
             <view class="form-item">
                 <text>社保上限</text>
