@@ -36,13 +36,6 @@ Page({
         personalTotal2: ''
     },
 
-    //事件处理函数
-    bindViewTap: function() {
-        wx.navigateTo({
-            url: '../logs/logs'
-        })
-    },
-
     onLoad: function() {
         wx.setNavigationBarTitle({
             'title': '个税计算'
@@ -50,7 +43,6 @@ Page({
     },
 
     onReady: function(e) {
-
     },
 
     calc: function() {
@@ -84,5 +76,17 @@ Page({
         this.setData({
             inputValue: e.detail.value
         })
-    }
+    },
+    onShareAppMessage: function (res) {
+        return {
+          title: '个税计算',
+          path: 'pages/index/index',
+          success: function(res) {
+            // 转发成功
+          },
+          fail: function(res) {
+            // 转发失败
+          }
+        }
+      }
 })
