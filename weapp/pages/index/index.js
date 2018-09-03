@@ -33,7 +33,9 @@ Page({
         personalTotal: '',
         realTax: '',
         got: '',
-        personalTotal2: ''
+        personalTotal2: '',
+        qzd: [5000, 3500],
+        qzdindex: 0
     },
 
     onLoad: function() {
@@ -42,8 +44,7 @@ Page({
         });
     },
 
-    onReady: function(e) {
-    },
+    onReady: function(e) {},
 
     calc: function() {
         var that = this;
@@ -60,7 +61,7 @@ Page({
                 }
             });
         }
-        var res = list.calc(this.data.inputValue);
+        var res = list.calc(this.data.inputValue, this.data.qzd[this.data.qzdindex]);
 
         this.setData({
             insurance: res.insurance,
@@ -77,16 +78,23 @@ Page({
             inputValue: e.detail.value
         })
     },
-    onShareAppMessage: function (res) {
+    onShareAppMessage: function(res) {
         return {
-          title: '个税计算',
-          path: 'pages/index/index',
-          success: function(res) {
-            // 转发成功
-          },
-          fail: function(res) {
-            // 转发失败
-          }
+            title: '个税计算',
+            path: 'pages/index/index',
+            success: function(res) {
+                // 转发成功
+            },
+            fail: function(res) {
+                // 转发失败
+            }
         }
-      }
+    },
+
+    bindPickerChange: function(e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            qzdindex: e.detail.value
+        })
+    },
 })

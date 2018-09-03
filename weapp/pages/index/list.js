@@ -1,6 +1,6 @@
 /*
 上海
-社保： max 19512 min 3902 
+社保： max 21396 min 4279 
 公积金： max 19512 min 2190
 
 个人
@@ -22,8 +22,8 @@
 
 var allList = {
     "shanghai": {
-        "max": 19512,
-        "min": 3902,
+        "max": 21396,
+        "min": 4279,
         "insurance": {
             "personal": [8, 2, 0.5, 0, 0, 7], // 养老 医疗 失业 工伤 生育 公积金
             "corporate": [20, 9.5, 0.5, 0.5, 1, 7]
@@ -31,7 +31,7 @@ var allList = {
     }
 };
 
-function calc(salary) {
+function calc(salary, qzd) {
     var city = "shanghai";
     var current = allList[city];
     var personalRate = (function() {
@@ -76,7 +76,7 @@ function calc(salary) {
         parseFloat(insuranceCompany.syu) +
         parseFloat(insuranceCompany.gjj)
 
-    var toTax = caclSalary - personalTotal - 3500;
+    var toTax = caclSalary - personalTotal - qzd;
     var realTax = 0;
 
     if (toTax >= 80001) {

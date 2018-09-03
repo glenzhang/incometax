@@ -89,6 +89,14 @@
     border: 1px solid #999;
 }
 
+.form-item .form-qzd {
+    width: 250rpx;
+    height: 52rpx;
+    padding: 0 10rpx;
+    line-height: 52rpx;
+    border: 1px solid #999;
+}
+
 .form-item .get-salary {
     color: #f60;
     font-weight: 600;
@@ -96,9 +104,9 @@
 
 button {
     width: 160rpx;
-    height: 180rpx;
+    height: 260rpx;
     margin: 0 0 0 20rpx;
-    line-height: 180rpx;
+    line-height: 260rpx;
     background-color: #43b149;
     color: #fff;
     font-weight: 600;

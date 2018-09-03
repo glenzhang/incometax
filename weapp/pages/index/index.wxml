@@ -6,6 +6,12 @@
                 <text>税前工资</text>
                 <input bindinput="bindKeyInput" type="number" confirm-type="done" maxlength="8"/>
             </view>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{qzd}}">
+                <view class="form-item">
+                    <text>选择起征点</text>
+                    <text class="form-qzd">{{qzd[qzdindex]}}</text>
+                </view>
+            </picker>
             <view class="form-item">
                 <text>社保上限</text>
                 <text>{{tax.max}}</text>
