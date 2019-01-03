@@ -1,25 +1,3 @@
-/*
-上海
-社保： max 21396 min 4279 
-公积金： max 19512 min 2190
-
-个人
-养老：8
-医疗：2
-失业：0.5
-工伤：0
-生育：0 
-公积金：7.0
-
-公司
-养老：20
-医疗：9.5
-失业：0.5
-工伤：0.5
-生育：1 
-公积金：7.0
-*/
-
 var allList = {
     "shanghai": {
         "max": 21396,
@@ -32,6 +10,7 @@ var allList = {
 };
 
 function calc(salary, qzd) {
+    console.log(qzd)
     var city = "shanghai";
     var current = allList[city];
     var personalRate = (function() {
@@ -43,6 +22,10 @@ function calc(salary, qzd) {
 
     if (salary > current.max) {
         salary = current.max;
+    }
+
+    if(salary < current.min) {
+        salary = current.min;
     }
 
     var insurance = {
@@ -79,30 +62,30 @@ function calc(salary, qzd) {
     var toTax = caclSalary - personalTotal - qzd;
     var realTax = 0;
 
-    if (toTax >= 80001) {
-        realTax = toTax * 0.45 - 13505;
-    } else if (toTax >= 55001 && toTax < 80001) {
-        realTax = toTax * 0.35 - 5505;
-    } else if (toTax >= 35001 && toTax < 55000) {
-        realTax = toTax * 0.3 - 2755;
-    } else if (toTax >= 9001 && toTax < 35000) {
-        realTax = toTax * 0.25 - 1005;
-    } else if (toTax >= 4501 && toTax < 9000) {
-        realTax = toTax * 0.20 - 555;
-    } else if (toTax >= 1501 && toTax < 4500) {
-        realTax = toTax * 0.1 - 105;
-    } else if (toTax >= 0 && toTax < 1500) {
+    if (toTax >= 80000) {
+        realTax = toTax * 0.45 - 15160;
+    } else if (toTax >= 55001 && toTax < 80000) {
+        realTax = toTax * 0.35 - 7160;
+    } else if (toTax >= 35000 && toTax < 55000) {
+        realTax = toTax * 0.3 - 4410;
+    } else if (toTax >= 25000 && toTax < 35000) {
+        realTax = toTax * 0.25 - 2660;
+    } else if (toTax >= 12000 && toTax < 25000) {
+        realTax = toTax * 0.20 - 1410;
+    } else if (toTax >= 3000 && toTax < 12000) {
+        realTax = toTax * 0.1 - 210;
+    } else if (toTax >= 0 && toTax < 3000) {
         realTax = toTax * 0.03;
     }
 
     /*
-    [0, 1500, 0.03, 0]
-    [1501, 4500, 0.1, 105]
-    [4501, 9000, 0.2, 555]
-    [9001, 35000, 0.25, 1005]
-    [35001, 55000, 0.3, 2755]
-    [55001, 80000, 0.35, 5505]
-    [80001, 80000, 0.45, 13505]
+    * [0, 3000, 0.03, 0]
+    * [3000, 12000, 0.1, 210]
+    * [12000, 25000, 0.2, 1410]
+    * [25000, 35000, 0.25, 2660]
+    * [35000, 55000, 0.3, 4410]
+    * [55000, 80000, 0.35, 7160]
+    * [80000, 80000, 0.45, 15160]
     */
 
     return {

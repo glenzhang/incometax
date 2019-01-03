@@ -13,6 +13,7 @@ Page({
     data: {
         tax: currentTax,
         inputValue: '',
+        reduceValue: 0,
         insurance: {
             ylao: '', //养老
             yliao: '', //医疗
@@ -34,8 +35,7 @@ Page({
         realTax: '',
         got: '',
         personalTotal2: '',
-        qzd: [5000, 3500],
-        qzdindex: 0
+        qzd: 5000
     },
 
     onLoad: function() {
@@ -61,7 +61,7 @@ Page({
                 }
             });
         }
-        var res = list.calc(this.data.inputValue, this.data.qzd[this.data.qzdindex]);
+        var res = list.calc(this.data.inputValue, parseFloat(this.data.qzd) + parseFloat(this.data.reduceValue));
 
         this.setData({
             insurance: res.insurance,
@@ -78,6 +78,12 @@ Page({
             inputValue: e.detail.value
         })
     },
+    bindKeyInputReduce(e) {
+        this.setData({
+            reduceValue: e.detail.value
+        });
+        console.log(this.data.reduceValue);
+    },
     onShareAppMessage: function(res) {
         return {
             title: '个税计算',
@@ -89,12 +95,5 @@ Page({
                 // 转发失败
             }
         }
-    },
-
-    bindPickerChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            qzdindex: e.detail.value
-        })
-    },
+    }
 })
